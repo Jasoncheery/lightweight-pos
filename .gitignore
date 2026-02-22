@@ -1,0 +1,24 @@
+# WordPress
+.DS_Store
+*.log
+*.sql
+*.sqlite
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node (if added later)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build files (if added later)
+/dist/
+/build/
+
+# OS
+Thumbs.db
