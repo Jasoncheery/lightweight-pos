@@ -337,7 +337,7 @@ createApp({
     template: `
         <div class="pos-container">
             <!-- Tabs -->
-            <div class="pos-tabs" style="position: fixed; top: 32px; left: 160px; right: 0; background: white; z-index: 100; padding: 10px 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <div class="pos-tabs">
                 <button class="pos-tab" :class="{ active: activeTab === 'pos' }" @click="switchTab('pos')">
                     POS
                 </button>
@@ -347,7 +347,7 @@ createApp({
             </div>
             
             <!-- POS View -->
-            <div v-if="activeTab === 'pos'" style="display: flex; gap: 20px; width: 100%; margin-top: 60px;">
+            <div v-if="activeTab === 'pos'" class="pos-view">
                 <!-- Products Section -->
                 <div class="pos-products">
                     <div class="pos-header">
@@ -548,7 +548,7 @@ createApp({
             </div>
             
             <!-- Reports View -->
-            <div v-if="activeTab === 'reports'" class="reports-container" style="width: 100%; margin-top: 60px;">
+            <div v-if="activeTab === 'reports'" class="reports-container">
                 <div class="pos-header">
                     <h2>Sales Reports</h2>
                     <select v-model="reportPeriod" @change="loadReports">
