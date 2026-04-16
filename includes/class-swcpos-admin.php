@@ -50,6 +50,11 @@ class SWCPOS_Admin {
         if ($hook !== 'toplevel_page_simple-wc-pos') {
             return;
         }
+
+        // Disable WP Heartbeat on POS screen to avoid admin-ajax interruptions.
+        // The POS page is a standalone SPA and does not rely on autosave/locks.
+        wp_dequeue_script('heartbeat');
+        wp_deregister_script('heartbeat');
         
         // Enqueue Vue.js from CDN
         wp_enqueue_script(
