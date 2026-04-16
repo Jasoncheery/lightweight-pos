@@ -7,6 +7,9 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            // WordPress-localized config made available to Vue template scope
+            appData: window.swcposData || {},
+
             // Active tab
             activeTab: 'pos',
             
@@ -310,7 +313,8 @@ createApp({
         
         // Format currency
         formatCurrency(amount) {
-            return swcposData.currency + parseFloat(amount).toFixed(2);
+            const currency = this.appData.currency || '';
+            return currency + parseFloat(amount).toFixed(2);
         },
         
         // Format date
@@ -669,7 +673,7 @@ createApp({
                     <div class="modal-body">
                         <div v-if="lastOrder" class="receipt">
                             <div class="receipt-header">
-                                <h2>{{ swcposData.shopName }}</h2>
+                                <h2>{{ appData.shopName || 'Store' }}</h2>
                                 <p>Order #{{ lastOrder.order_number }}</p>
                                 <p>{{ formatDate(new Date()) }}</p>
                             </div>
